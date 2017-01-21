@@ -23,6 +23,10 @@
                   <label for='amount'>Enter how much you want to spend: </label>
                   <input type='number' name='amount' id='amount'>
                 </div>
+                <div class='form-group'>
+                  <label for='color'>Enter what color you're interested in: </label>
+                  <input type='text' name='color' id='color'>
+                </div>
                 <button type='submit' class='btn btn btn-primary'>Submit</button>
 
               </form>
@@ -41,13 +45,23 @@
 
         $all_cars = array($ford, $porsche, $lexus, $accord, $cadi, $vwbug);
 
-        // Matching Cars under User price point input
-        $cars_matching_search = array();
+        // Matching Cars under User Input
+        $cars_matching_price = array();
+        $cars_matching_color = array();
         $price_point = $_GET["amount"];
+        $color_choice = $_GET["color"];
 
+        // Match User Price Point
         foreach ($all_cars as $match_car) {
-          if ($match_car->getPrice() <= $_GET["amount"]) {
-            array_push($cars_matching_search, $match_car);
+          if ($match_car->getPrice() <= $price_point) {
+            array_push($cars_matching_price, $match_car);
+          }
+        }
+
+        // Matching User Color Input
+        foreach ($cars_matching_price as $colored_car) {
+          if ($colored_car->getColor() == $color_choice) {
+            array_push($cars_matching_color, $colored_car);
           }
         }
 
@@ -62,14 +76,14 @@
         <body>
           <div class='container'>
             <h1>Find Your Car At Bob's!</h1>
-            <h3>dfkjdfj</h3>
+            <h3>Your search is based on:</h3>
             <ul>
-              <li>eee</li>
-              <li>rrrr</li>
+              <li>less than $" . $price_point . "</li>
+
             </ul>" .
 
             $output = "";
-            foreach ($cars_matching_search as $car) {
+            foreach ($cars_matching_color as $car) {
               $output = $output . "
               <div class='row'>
                 <div class='col-md-3'>

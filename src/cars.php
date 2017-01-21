@@ -16,10 +16,14 @@
             $this->image = $car_image;
         }
 
-        function worthBuying($max_price_inputted)
-        {
-            return $this->price < ($max_price_inputted);
-        }
+        // Takes user price point input, and grabs all cars less than user's price point!
+        // Look at this as an implicit IF conditional statement
+        // $this->price < ($max_price_inputted) is the same as if ($match_car->getPrice() <= $price_point)
+        // BUT, turns out I don't need the method. The getter works perfectly fine
+        // function worthBuying($max_price_inputted)
+        // {
+        //     return $this->price < ($max_price_inputted);
+        // }
 
         // SETTER GETTER MAKE MODEL
         function setMake($new_make)
