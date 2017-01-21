@@ -41,6 +41,16 @@
 
         $all_cars = array($ford, $porsche, $lexus, $accord, $cadi, $vwbug);
 
+        // Matching Cars under User price point input
+        $cars_matching_search = array();
+        $price_point = $_GET["amount"];
+
+        foreach ($all_cars as $match_car) {
+          if ($match_car->getPrice() <= $_GET["amount"]) {
+            array_push($cars_matching_search, $match_car);
+          }
+        }
+
         echo "<!DOCTYPE html>
         <html>
         <head>
@@ -59,7 +69,7 @@
             </ul>" .
 
             $output = "";
-            foreach ($all_cars as $car) {
+            foreach ($cars_matching_search as $car) {
               $output = $output . "
               <div class='row'>
                 <div class='col-md-3'>

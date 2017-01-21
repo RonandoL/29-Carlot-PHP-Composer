@@ -16,6 +16,11 @@
             $this->image = $car_image;
         }
 
+        function worthBuying($max_price_inputted)
+        {
+            return $this->price < ($max_price_inputted);
+        }
+
         // SETTER GETTER MAKE MODEL
         function setMake($new_make)
         {
