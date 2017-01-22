@@ -23,10 +23,12 @@
                   <label for='amount'>Enter how much you want to spend: </label>
                   <input type='number' name='amount' id='amount'>
                 </div>
+
                 <div class='form-group'>
                   <label for='color'>Enter what color you're interested in: </label>
                   <input type='text' name='color' id='color'>
                 </div>
+
                 <button type='submit' class='btn btn btn-primary'>Submit</button>
 
               </form>
@@ -49,7 +51,7 @@
         $cars_matching_price = array();
         $cars_matching_color = array();
         $price_point = $_GET["amount"];
-        $color_choice = $_GET["color"];
+        $color_choice = ucfirst($_GET["color"]);
 
         // Match User Price Point
         foreach ($all_cars as $match_car) {
@@ -78,7 +80,8 @@
             <h1>Find Your Car At Bob's!</h1>
             <h3>Your search is based on:</h3>
             <ul>
-              <li>less than $" . $price_point . "</li>
+              <li>less than: $" . $price_point . "</li>
+              <li>color: " . $color_choice . "</li>
 
             </ul>" .
 
